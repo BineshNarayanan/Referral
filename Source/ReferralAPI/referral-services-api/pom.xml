@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>Referral-API</artifactId>
+        <groupId>com.referral</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>referral-services-api</artifactId>
+    <packaging>pom</packaging>
+    <name>referral-services-api</name>
+    <modules>
+        <module>referral-services-controller</module>
+        <module>referral-services-model</module>
+        <module>referral-services-dto</module>
+        <module>referral-services-service</module>
+        <module>referral-services-persistence</module>
+    </modules>
+
+    <build>
+        <finalName>referral-services-api</finalName>
+    </build>
+</project>
