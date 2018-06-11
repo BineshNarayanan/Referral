@@ -16,7 +16,6 @@ DROP TABLE IF EXISTS `posts`;
 CREATE TABLE IF NOT EXISTS `posts` (
   `ID` varchar(36) NOT NULL,
   `TITLE` varchar(100) NOT NULL,
-  `URL` varchar(1000) NOT NULL,
   `TYPE` char(1) NOT NULL COMMENT 'B:BLOG; J:JOB',
   `IS_DELETED` tinyint(1) NOT NULL DEFAULT 0,
   `CREATED_BY` varchar(36) NOT NULL,
