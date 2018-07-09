@@ -1,4 +1,4 @@
-package com.referral.api.response;
+package com.referral.api.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

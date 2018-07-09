@@ -1,4 +1,4 @@
-package com.referral.api.aspect;
+package com.referral.api.aspect.logging;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.DateFormatUtils;
@@ -31,10 +31,15 @@ public class LoggingAspect {
             Object ret = joinPoint.proceed();
             log.debug("End time : {}", DateFormatUtils.format(System.currentTimeMillis(),"yyyy-MM-dd HH:mm:ss"));
             return ret;
-        } catch (Throwable e) {
+        } catch (Error e) {
+            log.error("Error while executing {}.{}({})",className, methodName, args);
+            log.error("Details are : {}", getStackTrace(e));
+            throw e;
+        } catch (Exception e) {
             log.error("Exception while executing {}.{}({})",className, methodName, args);
             log.error("Details are : {}", getStackTrace(e));
             throw e;
         }
     }
+
 }

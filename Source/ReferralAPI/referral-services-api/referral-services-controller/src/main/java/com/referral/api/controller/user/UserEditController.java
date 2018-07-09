@@ -1,7 +1,7 @@
 package com.referral.api.controller.user;
 
 import com.referral.api.dto.AppUserDTO;
-import com.referral.api.response.ApiResponse;
+import com.referral.api.dto.response.ApiResponse;
 import com.referral.api.service.IAddService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +19,12 @@ public class UserEditController {
         this.service = service;
     }
 
-    @ApiOperation(value="Edit a User",tags = "User Maintenance APIs")
+    @ApiOperation(value="Edit a User",tags = "User Management APIs")
     @PutMapping("/v1/user/{userId}")
     public ResponseEntity<ApiResponse<AppUserDTO>> editUser(@RequestBody AppUserDTO appUser,
                                                            @PathVariable String userId){
-        appUser.setId(userId);
-        AppUserDTO save = service.save(appUser);
+        AppUserDTO appUserDTO = new AppUserDTO(appUser, userId);
+        AppUserDTO save = service.save(appUserDTO);
         return new ResponseEntity<>(new ApiResponse<>(save), HttpStatus.OK);
     }
 }

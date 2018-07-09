@@ -1,6 +1,6 @@
 package com.referral.api.service;
 
-public interface IDeleteByIdService<ToBeDeleted,Id> {
+public interface IDeleteByIdService<ToBeDeleted> {
 
-    ToBeDeleted delete(Id id);
+    ToBeDeleted delete(final ToBeDeleted toBeDeleted);
 }

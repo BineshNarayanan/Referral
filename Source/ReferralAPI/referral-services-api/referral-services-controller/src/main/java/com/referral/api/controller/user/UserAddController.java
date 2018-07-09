@@ -1,7 +1,7 @@
 package com.referral.api.controller.user;
 
 import com.referral.api.dto.AppUserDTO;
-import com.referral.api.response.ApiResponse;
+import com.referral.api.dto.response.ApiResponse;
 import com.referral.api.service.IAddService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +21,9 @@ public class UserAddController {
         this.service = service;
     }
 
-    @ApiOperation(value="Adds a User",tags = "User Maintenance APIs")
+    @ApiOperation(value="Adds a User",tags = "User Management APIs")
     @PostMapping("/v1/user")
-    public ResponseEntity<ApiResponse<AppUserDTO>> addUser(@RequestBody AppUserDTO appUser){
+    public ResponseEntity<ApiResponse<AppUserDTO>> addUser(@RequestBody final AppUserDTO appUser){
         AppUserDTO save = service.save(appUser);
         return new ResponseEntity<>(new ApiResponse<>(save), HttpStatus.CREATED);
     }

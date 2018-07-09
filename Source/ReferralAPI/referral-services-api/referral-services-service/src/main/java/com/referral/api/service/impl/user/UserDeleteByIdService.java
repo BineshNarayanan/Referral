@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class UserDeleteByIdService implements IDeleteByIdService<AppUserDTO, String> {
+public class UserDeleteByIdService implements IDeleteByIdService<AppUserDTO> {
 
     private IAppUserRepository repository;
 
@@ -21,11 +21,12 @@ public class UserDeleteByIdService implements IDeleteByIdService<AppUserDTO, Str
     }
 
     @Override
-    public AppUserDTO delete(String id) {
-        Optional<AppUser> byId = repository.findById(id);
+    public AppUserDTO delete(final AppUserDTO toBeDeleted) {
+        Optional<AppUser> byId = repository.findById(toBeDeleted.getId());
         if(byId.isPresent()){
             AppUser appUser = byId.get();
             appUser.setIsDeleted(Boolean.TRUE);
+            appUser.setUpdatedBy(toBeDeleted.getUpdatedBy());
             AppUser save = repository.save(appUser);
             ModelMapper mapper = new ModelMapper();
             AppUserDTO appUserDTO = mapper.map(save, AppUserDTO.class);

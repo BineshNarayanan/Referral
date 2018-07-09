@@ -1,5 +1,6 @@
 package com.referral.api.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,9 +22,30 @@ public class AppUserDTO extends BaseDTO{
     private String email;
     private String userName;
     private String password;
+    @JsonIgnore
     private Blob profilePic;
 
     public AppUserDTO(String id) {
         super(id);
+    }
+
+    public AppUserDTO(AppUserDTO userDTO){
+        setVariables(userDTO);
+    }
+
+    public AppUserDTO(AppUserDTO userDTO, String id){
+        this.id = id;
+        setVariables(userDTO);
+    }
+
+    private void setVariables(AppUserDTO userDTO) {
+        this.firstName = userDTO.getFirstName();
+        this.middleName = userDTO.getMiddleName();
+        this.lastName = userDTO.getLastName();
+        this.email = userDTO.getEmail();
+        this.userName = userDTO.getUserName();
+        this.password = userDTO.getPassword();
+        this.createdBy = userDTO.getCreatedBy();
+        this.updatedBy = userDTO.getUpdatedBy();
     }
 }

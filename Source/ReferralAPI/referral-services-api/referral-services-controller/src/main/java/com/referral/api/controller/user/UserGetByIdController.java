@@ -1,7 +1,7 @@
 package com.referral.api.controller.user;
 
 import com.referral.api.dto.AppUserDTO;
-import com.referral.api.response.ApiResponse;
+import com.referral.api.dto.response.ApiResponse;
 import com.referral.api.service.IFindByIdService;
 import com.referral.api.service.impl.user.UserFindByIdServiceImpl;
 import io.swagger.annotations.ApiOperation;
@@ -22,7 +22,7 @@ public class UserGetByIdController {
         this.service = service;
     }
 
-    @ApiOperation(value = "Gets User by Id",tags = {"User Maintenance APIs"})
+    @ApiOperation(value = "Gets User by Id",tags = {"User Management APIs"})
     @GetMapping("/v1/user/{userId}")
     public ResponseEntity<ApiResponse<AppUserDTO>> getUserById(@PathVariable String userId){
         AppUserDTO appUserDTO = service.findById(userId);
