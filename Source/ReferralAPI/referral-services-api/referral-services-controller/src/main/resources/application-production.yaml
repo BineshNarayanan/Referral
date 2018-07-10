@@ -1,4 +1,4 @@
-#DEFAULT CONFIG
+#PROD CONFIG
 spring:
   data:
     jpa:
