@@ -40,3 +40,8 @@ logging:
   level:
     root: info
   file: ${CATALINA_HOME}/logs/refferal-api.log
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["loggers","health","info"]
